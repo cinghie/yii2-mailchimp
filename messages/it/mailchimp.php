@@ -11,8 +11,11 @@
  */
 
 return array(
+    'Email' => 'Email',
     'First Name' => 'Nome',
     'Last Name' => 'Cognome',
+    'List Name' => 'Nome Lista',
+    'Member Count' => 'Iscritti',
     'Name' => 'Nome',
     'Submit' => 'Invia',
     'Subscribe' => 'Iscriviti',
