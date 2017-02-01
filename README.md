@@ -35,3 +35,13 @@ Set on your configuration file, in modules section
     
 ]
 ```
+
+Actions
+-------
+
+<ul> 
+  <li>Lists View: PathToApp/index.php?r=mailchimp/default/lists</li>
+  <li>Lists View with Pretty Urls: PathToApp/mailchimp/default/lists</li>
+  <li>List View: PathToApp/index.php?r=mailchimp/default/list?id=XXX&name=XXX</li>
+  <li>List View with Pretty Urls: PathToApp/mailchimp/default/list?id=XXX&name=XXX</li>
+</ul>
