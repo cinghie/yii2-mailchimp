@@ -28,7 +28,11 @@ class Subscription extends Widget
 
         // Api Key
         if(!$this->apiKey) {
-            $this->apiKey = Yii::$app->getModule('mailchimp')->apiKey;
+            if(!Yii::$app->getModule('mailchimp')->apiKey) {
+                throw new \yii\base\InvalidConfigException("You must define apiKey in your Configuration File");
+            } else {
+                $this->apiKey = Yii::$app->getModule('mailchimp')->apiKey;
+            }
         }
 
         // Api Key

@@ -36,6 +36,16 @@ Set on your configuration file, in modules section
 ]
 ```
 
+Widget Subscription Example
+---------------------------
+
+```
+<?= Subscription::widget([
+    'apiKey' => 'MYAPIKEY' // if not set get Configuration apiKey
+    'list_id' => 'MYLISTID' // if not set raise Error
+]) ?>
+```
+
 Actions
 -------
 
