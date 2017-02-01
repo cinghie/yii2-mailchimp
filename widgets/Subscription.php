@@ -23,7 +23,7 @@ class Subscription extends Widget
     {
         parent::init();
 
-        $MailChimp = new MailChimp('291fb37fdebd8cae01d5dfa574dbad38-us15');
+        $MailChimp = new MailChimp('');
 
         if(isset($_POST['subscribe-submit']))
         {
