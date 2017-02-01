@@ -15,8 +15,11 @@ return array(
     'First Name' => 'Nome',
     'Last Name' => 'Cognome',
     'List Name' => 'Nome Lista',
-    'Member Count' => 'Iscritti',
+    'Lists' => 'Liste',
+    'List' => 'Lista',
+    'Member Count' => 'N° Iscritti',
     'Name' => 'Nome',
     'Submit' => 'Invia',
     'Subscribe' => 'Iscriviti',
+    'Unsubscribe Count' => 'N° Annullati',
 );

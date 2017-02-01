@@ -33,7 +33,10 @@ class DefaultController extends Controller
                         'actions' => ['lists', 'list'],
                         'roles' => ['@']
                     ]
-                ]
+                ],
+                'denyCallback' => function () {
+                    throw new \Exception('You are not allowed to access this page');
+                }
             ]
         ];
     }
@@ -50,7 +53,29 @@ class DefaultController extends Controller
         $lists = $MailChimp->get('lists');
 
         return $this->render('lists', [
-            'lists' => $lists,
+            'lists' => $lists['lists'],
+        ]);
+    }
+
+    /**
+     * Displays a single Items model.
+     * @return mixed
+     */
+    public function actionList()
+    {
+        $apiKey = Yii::$app->controller->module->apiKey;
+        $request = Yii::$app->request;
+
+        $id   = $request->get('id');
+        $name = $request->get('name');
+
+        $MailChimp = new MailChimp($apiKey);
+        $members = $MailChimp->get("lists/".$id."/members");
+
+        return $this->render('list', [
+            'members' => $members['members'],
+            'id' => $id,
+            'name' => $name
         ]);
     }
 
