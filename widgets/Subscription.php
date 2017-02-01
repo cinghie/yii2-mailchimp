@@ -1,14 +1,14 @@
 <?php
 
 /**
-* @copyright Copyright &copy; Gogodigital Srls
-* @company Gogodigital Srls - Wide ICT Solutions
-* @website http://www.gogodigital.it
-* @github https://github.com/cinghie/yii2-mailchimp
-* @license BSD 3-Clause
-* @package yii2-mailchimp
-* @version 0.0.1
-*/
+ * @copyright Copyright &copy; Gogodigital Srls
+ * @company Gogodigital Srls - Wide ICT Solutions
+ * @website http://www.gogodigital.it
+ * @github https://github.com/cinghie/yii2-mailchimp
+ * @license BSD 3-Clause
+ * @package yii2-mailchimp
+ * @version 0.1.0
+ */
 
 namespace cinghie\mailchimp\widgets;
 
@@ -19,16 +19,41 @@ use yii\helpers\Html;
 
 class Subscription extends Widget
 {
+    public $apiKey;
+    public $list_id;
+
     public function init()
     {
         parent::init();
 
-        $MailChimp = new MailChimp('');
+        // Api Key
+        if(!$this->apiKey) {
+            $this->apiKey = Yii::$app->getModule('mailchimp')->apiKey;
+        }
 
-        if(isset($_POST['subscribe-submit']))
+        // Api Key
+        if(!$this->list_id) {
+            throw new \yii\base\InvalidConfigException("You must define Mailchimp ListID");
+        }
+
+        $post = Yii::$app->request->post();
+        $MailChimp = new MailChimp($this->apiKey);
+
+        if($post) {
+            $email  = $post['subscribe-email'];
+            $fname  = isset($post['subscribe-first-name']) ? $post['subscribe-first-name'] : "";
+            $lname  = isset($post['subscribe-last-name']) ? $post['subscribe-last-name'] : "";
+            $submit = $post['subscribe-submit'];
+        }
+
+        if( isset($submit) )
         {
-            $result = $MailChimp->post("lists/33239/members", [
-                'email_address' => 'giando.working@gmail.com',
+            $result = $MailChimp->post("lists/".$this->list_id."/members", [
+                'merge_fields' => [
+                    'FNAME' => $fname,
+                    'LNAME' => $lname
+                ],
+                'email_address' => $email,
                 'status' => 'subscribed',
             ]);
 
@@ -56,4 +81,5 @@ class Subscription extends Widget
         echo Html::endForm();
         echo Html::endTag('div');
     }
+
 }
