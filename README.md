@@ -30,7 +30,9 @@ Set on your configuration file, in modules section
     
     'mailchimp' => [
         'class' => 'cinghie\mailchimp\Mailchimp',
-        'apiKey' => 'YOUR_API_KEY'
+        'apiKey' => 'YOUR_API_KEY',
+        'showFirstname' => true,
+        'showLastname' => true
     ]
     
 ]
