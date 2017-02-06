@@ -19,6 +19,8 @@ class Mailchimp extends \yii\base\Module
     public $controllerNamespace = 'cinghie\mailchimp\controllers';
 
     public $apiKey = "";
+    public $showFirstname = true;
+    public $showLastname = true;
 
     /**
      * @inheritdoc
