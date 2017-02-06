@@ -26,6 +26,12 @@ class Subscription extends Widget
     {
         parent::init();
 
+        $class   = "";
+        $fname   = "";
+        $lname   = "";
+        $email   = "";
+        $message = "";
+
         // Api Key
         if(!$this->apiKey) {
             if(!Yii::$app->getModule('mailchimp')->apiKey) {
@@ -62,29 +68,39 @@ class Subscription extends Widget
             ]);
 
             if ($MailChimp->success()) {
-                print_r($result);
+
+                $class   = "alert-success";
+                $message = $result['email_address']." ".$result['status'];
+
             } else {
-                print_r($result);
+
+                $class   = "alert-warning";
+                $message = $result['title'];
             }
         }
 
         echo Html::beginTag('div', array('class'=> 'col-md-12 text-center', 'id' => 'subscribe-div'));
+
+        if(isset($message) && $message) {
+            echo Html::tag('div', $message, array('id' => 'subscribe-message', 'class' => 'alert '.$class));
+        }
+
         echo Html::beginForm();
 
         if(Yii::$app->getModule('mailchimp')->showFirstname) {
             echo Html::beginTag('div', array('class'=> 'col-md-6 text-center'));
-            echo Html::textInput('subscribe-first-name',(empty($_POST['subscribe-first-name']) ? '' : $_POST['subscribe-first-name']), array('id' => 'subscribe-first-name','placeholder'=> Yii::t('mailchimp', 'First Name')));
+            echo Html::textInput('subscribe-first-name',(empty($post['subscribe-first-name']) ? '' : $post['subscribe-first-name']), array('id' => 'subscribe-first-name','placeholder'=> Yii::t('mailchimp', 'First Name')));
             echo Html::endTag('div');
         }
 
         if(Yii::$app->getModule('mailchimp')->showLastname) {
             echo Html::beginTag('div', array('class'=> 'col-md-6 text-center'));
-            echo Html::textInput('subscribe-last-name',(empty($_POST['subscribe-last-name']) ? '' : $_POST['subscribe-last-name']), array('id' => 'subscribe-last-name','placeholder'=> Yii::t('mailchimp', 'First Name')));
+            echo Html::textInput('subscribe-last-name',(empty($post['subscribe-last-name']) ? '' : $post['subscribe-last-name']), array('id' => 'subscribe-last-name','placeholder'=> Yii::t('mailchimp', 'First Name')));
             echo Html::endTag('div');
         }
 
         echo Html::beginTag('div', array('class'=> 'col-md-12 text-center'));
-        echo Html::textInput('subscribe-email', (empty($_POST['subscribe-email']) ? '' : $_POST['subscribe-email']), array('id' => 'subscribe-email', 'type' => 'email','placeholder'=> Yii::t('mailchimp', 'Email'), 'required' => 'required'));
+        echo Html::textInput('subscribe-email', (empty($post['subscribe-email']) ? '' : $post['subscribe-email']), array('id' => 'subscribe-email', 'type' => 'email','placeholder'=> Yii::t('mailchimp', 'Email'), 'required' => 'required'));
         echo Html::endTag('div');
         echo Html::beginTag('div', array('class'=> 'col-md-12 text-center'));
         echo Html::submitButton(Yii::t('mailchimp', 'Subscribe'), array('id' => 'subscribe-submit', 'name' => 'subscribe-submit'));
