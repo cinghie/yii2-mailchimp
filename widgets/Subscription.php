@@ -105,7 +105,10 @@ class Subscription extends Widget
         echo Html::beginTag('div', array('class'=> 'col-md-12 text-center'));
         echo Html::submitButton(Yii::t('mailchimp', 'Subscribe'), array('id' => 'subscribe-submit', 'name' => 'subscribe-submit'));
         echo Html::endTag('div');
+
+        echo '<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />';
         echo Html::endForm();
+
         echo Html::endTag('div');
     }
 
