@@ -103,7 +103,7 @@ class Subscription extends Widget
         echo Html::textInput('subscribe-email', (empty($post['subscribe-email']) ? '' : $post['subscribe-email']), array('id' => 'subscribe-email', 'type' => 'email','placeholder'=> Yii::t('mailchimp', 'Email'), 'required' => 'required', 'class'=> 'form-control'));
         echo Html::endTag('div');
         echo Html::beginTag('div', array('class'=> 'col-md-12 text-center'));
-        echo Html::submitButton(Yii::t('mailchimp', 'Subscribe'), array('id' => 'subscribe-submit', 'name' => 'subscribe-submit', 'class'=> 'btn btn-primary'));
+        echo Html::submitButton(Yii::t('mailchimp', 'Submit'), array('id' => 'subscribe-submit', 'name' => 'subscribe-submit', 'class'=> 'btn btn-primary'));
         echo Html::endTag('div');
 
         echo '<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />';
