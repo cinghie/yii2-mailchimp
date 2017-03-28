@@ -7,7 +7,7 @@
  * @github https://github.com/cinghie/yii2-mailchimp
  * @license BSD 3-Clause
  * @package yii2-mailchimp
- * @version 0.1.1
+ * @version 0.2.0
  */
 
 return array(
