@@ -21,6 +21,7 @@ class Subscription extends Widget
 {
     public $apiKey;
     public $list_id;
+    public $list_array;
 
     public function init()
     {
@@ -42,8 +43,10 @@ class Subscription extends Widget
         }
 
         // Api Key
-        if(!$this->list_id) {
+        if(!$this->list_id && !$this->list_array) {
             throw new \yii\base\InvalidConfigException("You must define Mailchimp ListID");
+        } else if ($this->list_array) {
+            $this->list_id = $this->list_array[Yii::$app->language];
         }
 
         $post = Yii::$app->request->post();
