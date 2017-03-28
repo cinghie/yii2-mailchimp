@@ -12,14 +12,14 @@
 
 return array(
     'Email' => 'Email',
-    'First Name' => 'Namensangabe',
-    'Last Name' => 'Nachnamens',
-    'List Name' => 'Listennamen',
-    'Lists' => 'Listen',
-    'List' => 'Liste',
-    'Member Count' => 'Mitgliedszähler',
+    'First Name' => 'First Name',
+    'Last Name' => 'Last Name',
+    'List Name' => 'List Name',
+    'Lists' => 'Lists',
+    'List' => 'List',
+    'Member Count' => 'Member Count',
     'Name' => 'Name',
-    'Submit' => 'Sende',
-    'Subscribe' => 'Abonnieren',
-    'Unsubscribe Count' => 'Abbestellen Count',
+    'Submit' => 'Submit',
+    'Subscribe' => 'Subscribe',
+    'Unsubscribe Count' => 'Unsubscribe Count',
 );
