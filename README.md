@@ -48,6 +48,19 @@ Widget Subscription Example
 ]) ?>
 ```
 
+alternative to list_id you can set an list_array to set a list_id to a specific language
+
+```
+<?= Subscription::widget([
+    'apiKey' => 'MYAPIKEY' // if not set get Configuration apiKey
+    'list_array' => [
+        'en' => 'MYLISTID_EN',
+        'es' => 'MYLISTID_ES',
+        'it' => 'MYLISTID_IT',                        
+    ]
+]) ?>
+```
+
 Actions
 -------
 
