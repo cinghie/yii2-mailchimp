@@ -91,13 +91,13 @@ class Subscription extends Widget
         echo Html::beginForm();
 
         if(Yii::$app->getModule('mailchimp')->showFirstname) {
-            echo Html::beginTag('div', array('class'=> 'col-md-6 text-center'));
+            echo Html::beginTag('div', array('class'=> 'col-md-6 col-sm-6 col-xs-12 text-center'));
             echo Html::textInput('subscribe-first-name',(empty($post['subscribe-first-name']) ? '' : $post['subscribe-first-name']), array('id' => 'subscribe-first-name','placeholder'=> Yii::t('mailchimp', 'First Name'), 'class'=> 'form-control'));
             echo Html::endTag('div');
         }
 
         if(Yii::$app->getModule('mailchimp')->showLastname) {
-            echo Html::beginTag('div', array('class'=> 'col-md-6 text-center'));
+            echo Html::beginTag('div', array('class'=> 'col-md-6 col-sm-6 col-xs-12 text-center'));
             echo Html::textInput('subscribe-last-name',(empty($post['subscribe-last-name']) ? '' : $post['subscribe-last-name']), array('id' => 'subscribe-last-name','placeholder'=> Yii::t('mailchimp', 'Last Name'), 'class'=> 'form-control'));
             echo Html::endTag('div');
         }
