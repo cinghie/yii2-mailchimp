@@ -1,10 +1,14 @@
 {
     "name": "cinghie/yii2-mailchimp",
     "description": "Yii2 Mailchimp to manage Mailchimp Email Platform in a Yii2 site.",
-    "keywords": ["yii2", "module", "mailchimp", "yii2 mailchimp","newsletter","yii2 newsletter"],
+    "keywords": [
+        "yii2 mailchimp", 
+        "mailchimp", 
+        "yii2 newsletter"
+    ],
     "homepage": "https://github.com/cinghie/yii2-mailchimp",
     "type": "yii2-extension",
-    "license": "BSD 3-Clause",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Gogodigital.it",
