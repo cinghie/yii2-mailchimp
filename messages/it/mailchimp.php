@@ -10,16 +10,20 @@
  * @version 0.2.0
  */
 
-return array(
+return [
     'Email' => 'Email',
     'First Name' => 'Nome',
+	'IP' => 'IP',
     'Last Name' => 'Cognome',
     'List Name' => 'Nome Lista',
     'Lists' => 'Liste',
     'List' => 'Lista',
     'Member Count' => 'N° Iscritti',
     'Name' => 'Nome',
+	'Newsletter' => 'Newsletter',
+	'Newsletters' => 'Newsletters',
     'Submit' => 'Invia',
     'Subscribe' => 'Iscriviti',
+	'Subscription\s Date' => 'Data Sottoscrizione',
     'Unsubscribe Count' => 'N° Annullati',
-);
+];

@@ -12,6 +12,7 @@
 
 namespace cinghie\mailchimp\controllers;
 
+use Exception;
 use Yii;
 use DrewM\MailChimp\MailChimp;
 use yii\filters\AccessControl;
@@ -19,6 +20,7 @@ use yii\web\Controller;
 
 class DefaultController extends Controller
 {
+
     /**
      * @inheritdoc
      */
@@ -31,20 +33,22 @@ class DefaultController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['lists', 'list'],
-                        'roles' => ['@']
+                        'roles' => $this->module->roles
                     ]
                 ],
                 'denyCallback' => function () {
-                    throw new \Exception('You are not allowed to access this page');
+	                throw new \RuntimeException(Yii::t('traits','You are not allowed to access this page'));
                 }
             ]
         ];
     }
 
-    /**
-     * Displays import view
-     * @return mixed
-     */
+	/**
+	 * Displays import view
+	 *
+	 * @return mixed
+	 * @throws Exception
+	 */
     public function actionLists()
     {
         $apiKey = Yii::$app->controller->module->apiKey;
@@ -57,10 +61,12 @@ class DefaultController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Items model.
-     * @return mixed
-     */
+	/**
+	 * Displays a single Items model
+	 *
+	 * @return mixed
+	 * @throws Exception
+	 */
     public function actionList()
     {
         $apiKey = Yii::$app->controller->module->apiKey;
@@ -70,7 +76,7 @@ class DefaultController extends Controller
         $name = $request->get('name');
 
         $MailChimp = new MailChimp($apiKey);
-        $members = $MailChimp->get("lists/".$id."/members");
+        $members = $MailChimp->get('lists/' .$id. '/members');
 
         return $this->render('list', [
             'members' => $members['members'],

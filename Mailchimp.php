@@ -13,14 +13,24 @@
 namespace cinghie\mailchimp;
 
 use Yii;
+use yii\i18n\PhpMessageSource;
 
 class Mailchimp extends \yii\base\Module
 {
-    public $controllerNamespace = 'cinghie\mailchimp\controllers';
+	// Mailchimp API Key
+    public $apiKey = '';
 
-    public $apiKey = "";
+	// Rules
+	public $roles = ['admin'];
+
+	// Show Firstname in Widget
     public $showFirstname = true;
+
+	// Show Lastname in Widget
     public $showLastname = true;
+
+	// Show Titles in the views
+	public $showTitles = false;
 
     /**
      * @inheritdoc
@@ -39,9 +49,10 @@ class Mailchimp extends \yii\base\Module
         if (!isset(Yii::$app->i18n->translations['mailchimp*']))
         {
             Yii::$app->i18n->translations['mailchimp*'] = [
-                'class' => 'yii\i18n\PhpMessageSource',
+                'class' => PhpMessageSource::class,
                 'basePath' => __DIR__ . '/messages',
             ];
         }
     }
+
 }
