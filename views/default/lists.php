@@ -1,5 +1,7 @@
 <?php
 
+/** @var $lists \DrewM\MailChimp\MailChimp */
+
 use yii\helpers\Url;
 
 // Set Title and Breadcrumbs
@@ -15,7 +17,7 @@ if($lists)
             <th>'.Yii::t('mailchimp','List Name').'</th>
             <th class="text-center">'.Yii::t('mailchimp','Member Count').'</th>
             <th class="text-center">'.Yii::t('mailchimp','Unsubscribe Count').'</th>
-            <th class="text-center">'.Yii::t('mailchimp','ID').'</th>
+            <th class="text-center">'.Yii::t('traits','ID').'</th>
           </tr>';
     $html .= '<tbody>';
 

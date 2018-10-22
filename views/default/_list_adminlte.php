@@ -1,5 +1,7 @@
 <?php
 
+/** @var $members \DrewM\MailChimp\MailChimp */
+
 use yii\helpers\Html;
 
 ?>

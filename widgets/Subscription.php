@@ -27,41 +27,41 @@ class Subscription extends Widget
     {
         parent::init();
 
-        $class   = "";
-        $fname   = "";
-        $lname   = "";
-        $email   = "";
-        $message = "";
+        $class   = '';
+        $fname   = '';
+        $lname   = '';
+        $email   = '';
+        $message = '';
 
-        // Api Key
         if(!$this->apiKey) {
             if(!Yii::$app->getModule('mailchimp')->apiKey) {
-                throw new \yii\base\InvalidConfigException("You must define apiKey in your Configuration File");
-            } else {
-                $this->apiKey = Yii::$app->getModule('mailchimp')->apiKey;
+                throw new \yii\base\InvalidConfigException('You must define apiKey in your Configuration File');
             }
+	        $this->apiKey = Yii::$app->getModule('mailchimp')->apiKey;
         }
 
-        // Api Key
-        if(!$this->list_id && !$this->list_array) {
-            throw new \yii\base\InvalidConfigException("You must define Mailchimp ListID");
-        } else if ($this->list_array) {
-            $this->list_id = $this->list_array[Yii::$app->language];
-        }
+	    if (!$this->list_id && !$this->list_array) {
+	        throw new \yii\base\InvalidConfigException('You must define Mailchimp ListID');
+	    }
 
-        $post = Yii::$app->request->post();
+	    if($this->list_array) {
+	        $this->list_id = $this->list_array[Yii::$app->language];
+	    }
+
+	    $post      = Yii::$app->request->post();
+	    $submit    = null;
         $MailChimp = new MailChimp($this->apiKey);
 
         if($post) {
             $email  = $post['subscribe-email'];
-            $fname  = isset($post['subscribe-first-name']) ? $post['subscribe-first-name'] : "";
-            $lname  = isset($post['subscribe-last-name']) ? $post['subscribe-last-name'] : "";
+            $fname  = isset($post['subscribe-first-name']) ? $post['subscribe-first-name'] : '';
+            $lname  = isset($post['subscribe-last-name']) ? $post['subscribe-last-name'] : '';
             $submit = $post['subscribe-submit'];
         }
 
-        if( isset($submit) )
+        if($submit !== null)
         {
-            $result = $MailChimp->post("lists/".$this->list_id."/members", [
+            $result = $MailChimp->post('lists/' .$this->list_id. '/members', [
                 'merge_fields' => [
                     'FNAME' => $fname,
                     'LNAME' => $lname
@@ -71,20 +71,17 @@ class Subscription extends Widget
             ]);
 
             if ($MailChimp->success()) {
-
-                $class   = "alert-success";
-                $message = $result['email_address']." ".$result['status'];
-
+                $class   = 'alert-success';
+                $message = $result['email_address']. ' ' .$result['status'];
             } else {
-
-                $class   = "alert-warning";
+                $class   = 'alert-warning';
                 $message = $result['title'];
             }
         }
 
         echo Html::beginTag('div', array('class'=> 'col-md-12 text-center', 'id' => 'subscribe-div'));
 
-        if(isset($message) && $message) {
+        if($message !== null && $message) {
             echo Html::tag('div', $message, array('id' => 'subscribe-message', 'class' => 'alert '.$class));
         }
 

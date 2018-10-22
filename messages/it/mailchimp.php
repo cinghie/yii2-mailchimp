@@ -19,11 +19,9 @@ return [
     'Lists' => 'Liste',
     'List' => 'Lista',
     'Member Count' => 'N° Iscritti',
-    'Name' => 'Nome',
-	'Newsletter' => 'Newsletter',
 	'Newsletters' => 'Newsletters',
+	'No Lists Found' => 'Nessuna lista trovata',
     'Submit' => 'Invia',
-    'Subscribe' => 'Iscriviti',
 	'Subscription\s Date' => 'Data Sottoscrizione',
     'Unsubscribe Count' => 'N° Annullati',
 ];

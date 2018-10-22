@@ -1,5 +1,9 @@
 <?php
 
+/** @var $members \DrewM\MailChimp\MailChimp */
+/** @var $id integer */
+/** @var $name string */
+
 // Set Title and Breadcrumbs
 $this->title = Yii::t('mailchimp', 'List').': '.$name.' ('.$id.')';
 $this->params['breadcrumbs'][] = Yii::t('mailchimp', 'Newsletters');
@@ -20,4 +24,3 @@ if(!file_exists($file)) {
 		'members' => $members
 	]);
 }
-
