@@ -1,6 +1,12 @@
 Yii2 Mailchimp
 ==============
 
+![Latest Stable Version](https://img.shields.io/packagist/v/cinghie/yii2-mailchimp.svg)
+![License](https://img.shields.io/packagist/l/cinghie/yii2-mailchimp.svg)
+![Latest Release Date](https://img.shields.io/github/release-date/cinghie/yii2-mailchimp.svg)
+![Latest Commit](https://img.shields.io/github/last-commit/cinghie/yii2-mailchimp.svg)
+[![Total Downloads](https://img.shields.io/packagist/dt/cinghie/yii2-mailchimp.svg)](https://packagist.org/packages/cinghie/yii2-mailchimp)
+
 Yii2 MailChimp extension to manage the Email Marketing Platform: https://www.mailchimp.com/
 
 Installation
