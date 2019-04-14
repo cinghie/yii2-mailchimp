@@ -29,7 +29,7 @@ or add
 Configuration
 -------------
 
-Set on your configuration file, in modules section
+Set on your configuration file
 
 ```
 use cinghie\mailchimp\components\Mailchimp as MailchimpComponent;
@@ -53,6 +53,16 @@ use cinghie\mailchimp\Mailchimp;
     ]
     
 ]
+```
+
+Usage
+---------------------------
+
+```
+\Yii::$app->mailchimp;
+\Yii::$app->mailchimp->getClient();
+\Yii::$app->mailchimp->getLists();
+\Yii::$app->mailchimp->getListMembers($listID);
 ```
 
 Widget Subscription Example
