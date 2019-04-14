@@ -15,7 +15,6 @@ namespace cinghie\mailchimp\controllers;
 use Exception;
 use RuntimeException;
 use Yii;
-use DrewM\MailChimp\MailChimp;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 
@@ -31,7 +30,7 @@ class DefaultController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'rules' => [
                     [
                         'allow' => true,
@@ -47,17 +46,14 @@ class DefaultController extends Controller
     }
 
 	/**
-	 * Displays import view
+	 * Displays Lists view
 	 *
 	 * @return mixed
 	 * @throws Exception
 	 */
     public function actionLists()
     {
-        $apiKey = Yii::$app->controller->module->apiKey;
-
-        $MailChimp = new MailChimp($apiKey);
-        $lists = $MailChimp->get('lists');
+	    $lists = Yii::$app->mailchimp->getLists();
 
         return $this->render('lists', [
             'lists' => $lists['lists'],
@@ -65,26 +61,22 @@ class DefaultController extends Controller
     }
 
 	/**
-	 * Displays a single Items model
+	 * Displays a single List view
 	 *
 	 * @return mixed
 	 * @throws Exception
 	 */
     public function actionList()
     {
-        $apiKey = Yii::$app->controller->module->apiKey;
-        $request = Yii::$app->request;
-
-        $id   = $request->get('id');
-        $name = $request->get('name');
-
-        $MailChimp = new MailChimp($apiKey);
-        $members = $MailChimp->get('lists/' .$id. '/members');
+        $request  = Yii::$app->request;
+	    $listID   = $request->get('id');
+        $listName = $request->get('name');
+        $members  = Yii::$app->mailchimp->getListMembers($listID);
 
         return $this->render('list', [
             'members' => $members['members'],
-            'id' => $id,
-            'name' => $name
+            'id' => $listID,
+            'name' => $listName
         ]);
     }
 }

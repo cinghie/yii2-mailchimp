@@ -32,11 +32,22 @@ Configuration
 Set on your configuration file, in modules section
 
 ```
+use cinghie\mailchimp\components\Mailchimp as MailchimpComponent;
+use cinghie\mailchimp\Mailchimp;
+
+'components' => [
+
+	'mailchimp' => [
+		'class' => MailchimpComponent::class,
+		'apiKey' => 'YOUR_MAILCHIMP_API_KEY'
+	],
+
+],
+
 'modules' => [ 
     
     'mailchimp' => [
-        'class' => 'cinghie\mailchimp\Mailchimp',
-        'apiKey' => 'YOUR_API_KEY',
+        'class' => Mailchimp::class,
         'showFirstname' => true,
         'showLastname' => true
     ]

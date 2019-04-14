@@ -18,6 +18,8 @@ return [
     'List Name' => 'Nome Lista',
     'Lists' => 'Liste',
     'List' => 'Lista',
+    'Mailchimp' => 'Mailchimp',
+    'Mailchimp API Key missing!' => 'API Key Mailchimp mancante!',
     'Member Count' => 'N° Iscritti',
 	'Newsletters' => 'Newsletters',
 	'No Lists Found' => 'Nessuna lista trovata',

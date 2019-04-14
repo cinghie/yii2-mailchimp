@@ -38,8 +38,9 @@ class Mailchimp extends Module
      */
     public function init()
     {
+	    $this->registerTranslations();
+
         parent::init();
-        $this->registerTranslations();
     }
 
     /**
