@@ -7,10 +7,10 @@
  * @github https://github.com/cinghie/yii2-mailchimp
  * @license BSD 3-Clause
  * @package yii2-mailchimp
- * @version 0.2.1
+ * @version 0.2.2
  */
 
-return array(
+return [
     'Email' => 'Email',
     'First Name' => 'Nome',
     'Last Name' => 'Sobrenome',
@@ -22,4 +22,4 @@ return array(
     'Submit' => 'Envia',
     'Subscribe' => 'Se inscrever',
     'Unsubscribe Count' => 'Contagem de Unsubscribe',
-);
+];
