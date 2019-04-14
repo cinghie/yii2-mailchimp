@@ -12,45 +12,49 @@
 
 namespace cinghie\mailchimp\widgets;
 
-use Yii;
 use DrewM\MailChimp\MailChimp;
+use Yii;
+use yii\base\InvalidConfigException;
 use yii\bootstrap\Widget;
 use yii\helpers\Html;
 
+/**
+ * Class Subscription
+ */
 class Subscription extends Widget
 {
-    public $apiKey;
+	/** @var string $list_id */
     public $list_id;
+
+	/** @var array $list_array */
     public $list_array;
 
-    public function init()
+	/**
+	 * @inheritDoc
+	 *
+	 * @throws InvalidConfigException
+	 */
+	public function init()
     {
-        parent::init();
-
         $class   = '';
         $fname   = '';
         $lname   = '';
         $email   = '';
         $message = '';
 
-        if(!$this->apiKey) {
-            if(!Yii::$app->getModule('mailchimp')->apiKey) {
-                throw new \yii\base\InvalidConfigException('You must define apiKey in your Configuration File');
-            }
-	        $this->apiKey = Yii::$app->getModule('mailchimp')->apiKey;
-        }
-
 	    if (!$this->list_id && !$this->list_array) {
-	        throw new \yii\base\InvalidConfigException('You must define Mailchimp ListID');
+	        throw new InvalidConfigException('You must define Mailchimp ListID');
 	    }
 
 	    if($this->list_array) {
 	        $this->list_id = $this->list_array[Yii::$app->language];
 	    }
 
-	    $post      = Yii::$app->request->post();
-	    $submit    = null;
-        $MailChimp = new MailChimp($this->apiKey);
+	    $post = Yii::$app->request->post();
+	    $submit = null;
+
+	    /** @var MailChimp $mailchimp **/
+        $mailchimp = Yii::$app->mailchimp->getClient();
 
         if($post) {
             $email  = $post['subscribe-email'];
@@ -61,7 +65,7 @@ class Subscription extends Widget
 
         if($submit !== null)
         {
-            $result = $MailChimp->post('lists/' .$this->list_id. '/members', [
+            $result = $mailchimp->post('lists/' .$this->list_id. '/members', [
                 'merge_fields' => [
                     'FNAME' => $fname,
                     'LNAME' => $lname
@@ -70,7 +74,7 @@ class Subscription extends Widget
                 'status' => 'subscribed',
             ]);
 
-            if ($MailChimp->success()) {
+            if ($mailchimp->success()) {
                 $class   = 'alert-success';
                 $message = $result['email_address']. ' ' .$result['status'];
             } else {
@@ -110,6 +114,7 @@ class Subscription extends Widget
         echo Html::endForm();
 
         echo Html::endTag('div');
-    }
 
+	    parent::init();
+    }
 }

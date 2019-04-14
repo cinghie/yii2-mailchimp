@@ -74,7 +74,6 @@ Widget Subscription Example
 
 ```
 <?= Subscription::widget([
-    'apiKey' => 'MYAPIKEY' // if not set get Configuration apiKey
     'list_id' => 'MYLISTID' // if not set raise Error
 ]) ?>
 ```
@@ -83,7 +82,6 @@ alternative to list_id you can set an list_array to set a list_id to a specific 
 
 ```
 <?= Subscription::widget([
-    'apiKey' => 'MYAPIKEY' // if not set get Configuration apiKey
     'list_array' => [
         'en' => 'MYLISTID_EN',
         'es' => 'MYLISTID_ES',

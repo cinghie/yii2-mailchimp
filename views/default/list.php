@@ -1,8 +1,8 @@
 <?php
 
-/** @var $members \DrewM\MailChimp\MailChimp */
-/** @var $id integer */
-/** @var $name string */
+/** @var array $members */
+/** @var integer $id */
+/** @var string $name */
 
 // Set Title and Breadcrumbs
 $this->title = Yii::t('mailchimp', 'List').': '.$name.' ('.$id.')';
