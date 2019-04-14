@@ -13,14 +13,17 @@
 namespace cinghie\mailchimp\controllers;
 
 use Exception;
+use RuntimeException;
 use Yii;
 use DrewM\MailChimp\MailChimp;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 
+/**
+ * Class DefaultController
+ */
 class DefaultController extends Controller
 {
-
     /**
      * @inheritdoc
      */
@@ -36,8 +39,8 @@ class DefaultController extends Controller
                         'roles' => $this->module->roles
                     ]
                 ],
-                'denyCallback' => function () {
-	                throw new \RuntimeException(Yii::t('traits','You are not allowed to access this page'));
+                'denyCallback' => static function () {
+	                throw new RuntimeException(Yii::t('traits','You are not allowed to access this page'));
                 }
             ]
         ];
@@ -84,5 +87,4 @@ class DefaultController extends Controller
             'name' => $name
         ]);
     }
-
 }

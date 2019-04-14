@@ -13,9 +13,10 @@
 namespace cinghie\mailchimp;
 
 use Yii;
+use yii\base\Module;
 use yii\i18n\PhpMessageSource;
 
-class Mailchimp extends \yii\base\Module
+class Mailchimp extends Module
 {
 	// Mailchimp API Key
     public $apiKey = '';
@@ -54,5 +55,4 @@ class Mailchimp extends \yii\base\Module
             ];
         }
     }
-
 }
