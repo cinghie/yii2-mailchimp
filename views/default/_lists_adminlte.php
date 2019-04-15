@@ -62,3 +62,5 @@ if(count($lists)):
 	<div class="alert alert-danger"><?= Yii::t('mailchimp', 'No Lists Found') ?></div>
 
 <?php endif ?>
+
+

@@ -13,6 +13,7 @@
 namespace cinghie\mailchimp\components;
 
 use DrewM\MailChimp\MailChimp as baseMailchimp;
+use Exception;
 use Yii;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
@@ -55,6 +56,8 @@ class Mailchimp extends Component
 
 	/**
 	 * Mailchimp init
+	 *
+	 * @throws Exception
 	 */
 	public function init()
 	{
@@ -84,7 +87,7 @@ class Mailchimp extends Component
 	/**
 	 * Get List Members
 	 *
-	 * @param $listID
+	 * @param string $listID
 	 *
 	 * @return array
 	 */
@@ -93,4 +96,3 @@ class Mailchimp extends Component
 		return $this->_mailchimp->get('lists/' .$listID. '/members');
 	}
 }
-
