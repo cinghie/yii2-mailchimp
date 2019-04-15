@@ -112,18 +112,18 @@ class Subscription extends Widget
 
 	    if(Yii::$app->getModule('mailchimp')->showFirstname) {
 		    echo Html::beginTag('div', array('class'=> 'col-md-6 col-sm-6 col-xs-12 text-center'));
-		    echo Html::textInput('subscribe-first-name',(empty($this->_post['subscribe-first-name']) ? '' : $this->_post['subscribe-first-name']), array('id' => 'subscribe-first-name','placeholder'=> Yii::t('traits', 'Firstname'), 'class'=> 'form-control'));
+		    echo Html::textInput('subscribe-first-name',(empty($this->_post['subscribe-first-name']) ? '' : $this->_post['subscribe-first-name']), array('id' => 'subscribe-first-name','placeholder'=> Yii::t('mailchimp', 'First Name'), 'class'=> 'form-control'));
 		    echo Html::endTag('div');
 	    }
 
 	    if(Yii::$app->getModule('mailchimp')->showLastname) {
 		    echo Html::beginTag('div', array('class'=> 'col-md-6 col-sm-6 col-xs-12 text-center'));
-		    echo Html::textInput('subscribe-last-name',(empty($this->_post['subscribe-last-name']) ? '' : $this->_post['subscribe-last-name']), array('id' => 'subscribe-last-name','placeholder'=> Yii::t('traits', 'Lastname'), 'class'=> 'form-control'));
+		    echo Html::textInput('subscribe-last-name',(empty($this->_post['subscribe-last-name']) ? '' : $this->_post['subscribe-last-name']), array('id' => 'subscribe-last-name','placeholder'=> Yii::t('mailchimp', 'Last Name'), 'class'=> 'form-control'));
 		    echo Html::endTag('div');
 	    }
 
 	    echo Html::beginTag('div', array('class'=> 'col-md-12 text-center'));
-	    echo Html::textInput('subscribe-email', (empty($this->_post['subscribe-email']) ? '' : $this->_post['subscribe-email']), array('id' => 'subscribe-email', 'type' => 'email','placeholder'=> Yii::t('traits', 'Email'), 'required' => 'required', 'class'=> 'form-control'));
+	    echo Html::textInput('subscribe-email', (empty($this->_post['subscribe-email']) ? '' : $this->_post['subscribe-email']), array('id' => 'subscribe-email', 'type' => 'email','placeholder'=> Yii::t('mailchimp', 'Email'), 'required' => 'required', 'class'=> 'form-control'));
 	    echo Html::endTag('div');
 	    echo Html::beginTag('div', array('class'=> 'col-md-12 text-center'));
 	    echo Html::submitButton(Yii::t('mailchimp', 'Submit'), array('id' => 'subscribe-submit', 'name' => 'subscribe-submit', 'class'=> 'btn btn-primary'));
