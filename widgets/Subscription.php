@@ -50,7 +50,7 @@ class Subscription extends Widget
 	public function init()
     {
 	    if (!$this->list_id && !$this->list_array) {
-	        throw new InvalidConfigException('You must define Mailchimp ListID');
+	        throw new InvalidConfigException(Yii::t('mailchimp','You must define Mailchimp ListID!'));
 	    }
 
 	    if($this->list_array) {

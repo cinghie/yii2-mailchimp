@@ -26,4 +26,5 @@ return [
     'Submit' => 'Invia',
 	'Subscription\s Date' => 'Data Sottoscrizione',
     'Unsubscribe Count' => 'N° Annullati',
+	'You must define Mailchimp ListID!' => 'Devi definire il ListID di Mailchimp!',
 ];

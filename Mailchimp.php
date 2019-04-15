@@ -18,9 +18,6 @@ use yii\i18n\PhpMessageSource;
 
 class Mailchimp extends Module
 {
-	// Mailchimp API Key
-    public $apiKey = '';
-
 	// Rules
 	public $roles = ['admin'];
 
