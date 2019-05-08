@@ -67,7 +67,7 @@ Override controller example, on modules config
 'modules' => [ 
 
 	'mailchimp' => [
-		'class' => 'cinghie\mailchimp\Mailchimp',
+		'class' => Mailchimp::class,
 		'controllerMap' => [
 			'default' => 'app\controllers\DefaultController',
 		]
