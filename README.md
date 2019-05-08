@@ -59,6 +59,39 @@ use cinghie\mailchimp\Mailchimp;
 ]
 ```
 
+## Overrides
+
+Override controller example, on modules config
+
+```
+'modules' => [ 
+
+	'mailchimp' => [
+		'class' => 'cinghie\mailchimp\Mailchimp',
+		'controllerMap' => [
+			'default' => 'app\controllers\DefaultController',
+		]
+	]
+	
+],
+```
+
+Override view example, on components config
+
+```
+'components' => [ 
+
+	'view' => [
+		'theme' => [
+			'pathMap' => [
+				'@cinghie/mailchimp/views/default' => '@app/views/mailchimp/default',
+			],
+		],
+	],
+	
+],
+```
+
 Usage
 ---------------------------
 
